@@ -1,10 +1,10 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import Counter from "./index";
 
 describe("Counter component", () => {
-  it("should do without error", () => {
+  it("should do render without error", () => {
     const { getByText } = render(<Counter />);
     expect(getByText("Increment")).toBeInTheDocument;
   });
