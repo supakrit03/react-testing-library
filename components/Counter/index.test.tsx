@@ -1,11 +1,24 @@
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import Counter from "./index";
 
 describe("Counter component", () => {
-  it("renders a counter", () => {
-    render(<Counter />);
+  it("should do without error", () => {
+    const { getByText } = render(<Counter />);
+    expect(getByText("Increment")).toBeInTheDocument;
+  });
 
-    expect(screen.getAllByText("index")).toContain;
+  it("should do initially start with text of 0", () => {
+    const { getByTestId } = render(<Counter />);
+    expect(getByTestId("counter").textContent).toBe("0");
+  });
+
+  it("should do counter increment", async () => {
+    const { getByTestId, getByText } = render(<Counter />);
+
+    await userEvent.click(getByText(/Increment/i));
+
+    expect(getByTestId("counter").textContent).toBe("1");
   });
 });
