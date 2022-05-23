@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Input from "./Input";
+import Form from "./Form";
 import GuessedWord from "./GuessedWord";
 import Congrats from "./Congrats";
 
@@ -10,7 +10,17 @@ const Jotto = () => {
   return (
     <div className="d-flex flex-column justify-content-center mt-4 align-items-center">
       <h1>Jotto App</h1>
-      <Input value={guessWord} onChange={(value) => setGuessWord(value)} />
+      <Form
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          console.log("submitted");
+          setGuessWord(e.target["guessWord"].value);
+
+          setTimeout(() => {
+            e.target.reset();
+          });
+        }}
+      />
       <GuessedWord />
       <Congrats />
     </div>
