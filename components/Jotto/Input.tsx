@@ -1,9 +1,18 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
-const Input: FC = () => {
+type Props = {
+  value: string;
+  onChange: (value: string) => void;
+};
+const Input: FC<Props> = ({ value, onChange }) => {
   return (
     <div>
-      <input />
+      <input
+        value={value}
+        data-testid="guess-input"
+        onChange={(e) => onChange(e.target.value)}
+      />
+      <button data-testid="submit-button">Submit</button>
     </div>
   );
 };
