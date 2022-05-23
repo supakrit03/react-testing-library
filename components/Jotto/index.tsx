@@ -13,12 +13,8 @@ const Jotto = () => {
       <Form
         onSubmit={(e: any) => {
           e.preventDefault();
-          console.log("submitted");
           setGuessWord(e.target["guessWord"].value);
-
-          setTimeout(() => {
-            e.target.reset();
-          });
+          e.target.reset();
         }}
       />
       <GuessedWord />

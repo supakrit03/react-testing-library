@@ -9,6 +9,10 @@ describe("Jotto app", () => {
     return e;
   });
 
+  afterEach(() => {
+    mockOnSubmit.mockClear();
+  });
+
   it("should render without errors", () => {
     const { getByTestId } = render(<Form onSubmit={mockOnSubmit} />);
 
