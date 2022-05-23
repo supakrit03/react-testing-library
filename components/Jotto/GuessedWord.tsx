@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 type Props = {
-  guessedWords?: string[];
+  guessedWords?: { guessedWord: string }[];
 };
 
 const GuessedWord: FC<Props> = ({ guessedWords = [] }) => {
@@ -11,6 +11,27 @@ const GuessedWord: FC<Props> = ({ guessedWords = [] }) => {
         <div data-testid="guessed-instruction">
           Try to guessed the secret word !
         </div>
+      )}
+
+      {guessedWords.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+            </tr>
+            <tr>
+              <th>Guess word</th>
+            </tr>
+          </thead>
+          <tbody>
+            {guessedWords.map(({ guessedWord }, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{guessedWord}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );

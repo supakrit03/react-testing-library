@@ -17,6 +17,6 @@ describe("Congrats component", () => {
 
   it("should render Congrats when `success` prop is true", () => {
     setup({ success: true });
-    expect(screen.getByTestId("congrats").textContent).toBe("Congrats");
+    expect(screen.getByTestId("congrats")).toBeInTheDocument;
   });
 });

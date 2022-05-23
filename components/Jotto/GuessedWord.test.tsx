@@ -18,8 +18,14 @@ describe("GuessedWord component", () => {
   });
 
   it("shouldn't render instruction to guess a word when `guessedWords` isn't empty", () => {
-    const { queryByText } = setup({ guessedWords: ["foo"] });
+    const { queryByText } = setup({ guessedWords: [{ guessedWord: "foo" }] });
 
     expect(queryByText("guessed-instruction")).not.toBeInTheDocument();
+  });
+
+  it("should render table when `guessedWords` isn't empty", () => {
+    const { getByRole } = setup({ guessedWords: [{ guessedWord: "foo" }] });
+
+    expect(getByRole("table")).toBeInTheDocument();
   });
 });
